@@ -7,8 +7,8 @@ public:
   int getNumber() const;
   char getSuit() const;
 private:
-  const int number;
-  const char suit;
+  int number;
+  char suit;
 
 };
 

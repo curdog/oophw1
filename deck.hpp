@@ -12,5 +12,6 @@ public:
 private:
   Card* deck;
   int index;
+  const int size = 30;
 };
 #endif
