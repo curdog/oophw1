@@ -5,18 +5,21 @@
 
 
 Deck::Deck(){
-  deck = new Deck[DECK_SIZE];
-  char base = '<'
+  DECK_SIZE = 30;
+  SUITS = 3;
+
+  deck = new Card*[DECK_SIZE];
+  char base = '<';
 
   for( int i = 0; i < SUITS; i++ ){
     for( int j = 0; j < (DECK_SIZE / SUITS); j++ ){
-      deck[i + j] = new Card( j, base + (char)i );
+      deck[i + j] = new  Card( j, base + (char)i );
     }
   }
 
 }
 
-~Deck::Deck(){
+Deck::~Deck(){
   delete[] deck;
 }
 
@@ -33,6 +36,7 @@ Card* Deck::deal(){
   if( index > DECK_SIZE ){
     return 0;
   }  
+  //possible bug here, trying
   return deck[index++];
 }
 
