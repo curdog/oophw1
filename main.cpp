@@ -57,16 +57,22 @@ int main() {
     
     //play bard music
     
-    //player plays
-    cout<<"Play a card.";
-    cin>> ;
-    
-    
+    //player plays ( in function pickCard  returns a Card pointer)
+    int pickedCard = pickCard( hand , ( number of cards left ) );
+    board[0] = hand[ pickedCard ];//change
+    //remove card from hand
+    hand[pickedCard] = 0;
+    //arrayShift to put zeros at end;
     
     //ai a plays
     a.play_Card( board );
     //ai b plays 
     b.play_Card( board );
+    
+    //function to pick a winner win condition is highest card of suit
+    //score
+    
+    //after all this works then work on changing player order with who wins.
     
     }
     
@@ -75,10 +81,19 @@ int main() {
   return 0;
 }
 
-void printHand( Card[] hand, int numCards ){
+void printHand( Card** hand, int numCards ){
   for( int i = 0; i < numCards; i++ ){
-    cout << hand[i].getNumber() << " " << hand[i].getSuit() << endl;
+    cout << hand[i]->getNumber() << " " << hand[i]->getSuit() << endl;
   }
 } 
 
-void 
+//returns index of selected card
+int pickCard( Card** hand, int numCards ){
+    cout<<"Play a card.";
+    cin>> ;
+  
+  hand[i]->get
+  
+  
+  return picked card index;
+}
