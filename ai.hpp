@@ -7,8 +7,9 @@ class Ai {
 public:
   Ai( int hand_size );
   ~Ai();
-  Card* play_Card( const Card* );
+  Card* play_Card( const Card**, int );
   int recieveDelt( const Card* );
+  int makeBid();
 
 private:
   Card* hand;

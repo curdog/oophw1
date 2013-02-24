@@ -14,11 +14,10 @@ Ai::~Ai( ){
 }
 
 
-Card* Ai::play_Card( const Card* board ){
+Card* Ai::play_Card( const Card** board, int players ){
   if( board == 0 ){
     return 0;
   }
-  
   
   
   Card* highest_suit = hand[0];
@@ -27,9 +26,15 @@ Card* Ai::play_Card( const Card* board ){
   
   
   for( int x=0; x<size_hand; x++){
-    if( board[0]->getSuit() == hand[i]->getSuit() ){
-       sizeof hand
+    if( board[0]->getSuit() == hand[x]->getSuit() ){
+      
     }
+    
   
+  }
+}
+
+
+int recieveDelt( const Card* delt ){
   
 }
