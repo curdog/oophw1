@@ -5,17 +5,17 @@
 
 using namespace std;
 
-void printHand( Card[], int ); 
+void printHand( Card[], int );
+int pickCard( Card[], int );
 
 int main() {
-  Deck deck = new Deck();
+  Deck::deck = new Deck();
   int choice = 1;
   
   while( choice ){
-    //
     
-    cout << "1:  Play Game" << endl;
-    cout << "0:  Quit" << endl;
+    cout << "1: Play Game" << endl;
+    cout << "0: Quit" << endl;
     cin >> choice;
     
     if( !choice ) continue;
@@ -57,16 +57,22 @@ int main() {
     
     //play bard music
     
-    //player plays ( in function pickCard  returns a Card pointer)
-    int pickedCard = pickCard( hand , ( number of cards left ) );
+    //player plays ( in function pickCard returns a Card pointer)
+    int pickedCard = pickCard( Card** hand, int numCards );
     board[0] = hand[ pickedCard ];//change
-    //remove card from hand
-    hand[pickedCard] = 0;
+    hand[pickedCard] = 0;//remove card from hand
+    int temp = 0;
     //arrayShift to put zeros at end;
-    
+    for(int i = 0; i < HAND_SIZE; i++){
+            if(Card** hand[i]==0){
+            Card** hand[i]=temp;
+            Card** hand[i+1]=Card** hand[i]; //swap
+            temp=Card** hand[i+1];
+            }
+}
     //ai a plays
     a.play_Card( board );
-    //ai b plays 
+    //ai b plays
     b.play_Card( board );
     
     //function to pick a winner win condition is highest card of suit
@@ -85,14 +91,14 @@ void printHand( Card** hand, int numCards ){
   for( int i = 0; i < numCards; i++ ){
     cout << hand[i]->getNumber() << " " << hand[i]->getSuit() << endl;
   }
-} 
+}
 
 //returns index of selected card
 int pickCard( Card** hand, int numCards ){
     cout<<"Play a card.";
     cin>> ;
   
-  hand[i]->get
+  hand[i]->getNumber();
   
   
   return picked card index;
