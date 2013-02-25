@@ -64,7 +64,7 @@ int main() {
     int temp = 0;
     //arrayShift to put zeros at end;
     for(int i = 0; i < HAND_SIZE; i++){
-            if(Card** hand[i]==0){
+            if(Card** hand[i]=0){
             Card** hand[i]=temp;
             Card** hand[i+1]=Card** hand[i]; //swap
             temp=Card** hand[i+1];
