@@ -9,7 +9,7 @@ void printHand( Card[], int );
 int pickCard( Card[], int );
 
 int main() {
-  Deck::deck = new Deck();
+  Dec::deck = new Deck();
   int choice = 1;
   
   while( choice ){
@@ -25,7 +25,7 @@ int main() {
     //players hand
     Card** hand = new Card*[10];
     //AI's
-    Ai; a,b;
+    Ai a,b;
     a = Ai( HAND_SIZE );
     b = Ai( HAND_SIZE );
     
@@ -34,7 +34,7 @@ int main() {
     //bids'
     int bids[] = {0,0,0};
     //scores'
-    int scores[] = {0,0,0};
+    int scores[] = {0,0,0}
    
    //deal
     for( int i = 0; i < HAND_SIZE; i++ ){
@@ -63,8 +63,8 @@ int main() {
     hand[pickedCard] = 0;//remove card from hand
     int temp = 0;
     //arrayShift to put zeros at end;
-    for(int i = 0; i < HAND_SIZE; i++){
-            if(Card** hand[i]=0){
+    for( int i = 0; i < HAND_SIZE; i++ ){
+            if(Card** hand[i]==0){
             Card** hand[i]=temp;
             Card** hand[i+1]=Card** hand[i]; //swap
             temp=Card** hand[i+1];
@@ -96,14 +96,17 @@ void printHand( Card** hand, int numCards ){
 //returns index of selected card
 int pickCard( Card** hand, int numCards ){
     int choice;
-    cout<<"Play a card.";
-    cin>> choice;
-  //dispay number choice with card list
-  hand[i]->getNumber();
-  
+for( i=0,i< HAND_SIZE,i++ ){
+    cout << "Choice: " <<
+    cout << hand[i]->getNumber() << " " << hand[i]->getSuit() << endl;
+    cout << "Play a card." ;
+    cin >> choice;
+    hand[i]->getNumber();
+  }
   
   return choice;
 }
+
 // Classes not defined
 // errors with identifiers
 // errors with how coding that is unfamilar is running - program is returning an error stating
