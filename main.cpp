@@ -63,6 +63,7 @@ int main() {
 			int pickedCard = pickCard(  hand,  numCards );
 			board[0] = hand[ pickedCard ];//change
 			hand[pickedCard] = 0;//remove card from hand
+			numCards--; 
 			
 			//arrayShift to put zeros at end;
 			//minus one to prevent overflow also doesn't matter if there is a zero already at end
