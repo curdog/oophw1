@@ -25,7 +25,7 @@ int main() {
     //players hand
     Card** hand = new Card*[10];
     //AI's
-    Ai a,b;
+    Ai; a,b;
     a = Ai( HAND_SIZE );
     b = Ai( HAND_SIZE );
     
@@ -34,7 +34,7 @@ int main() {
     //bids'
     int bids[] = {0,0,0};
     //scores'
-    int scores[] = {0,0,0}
+    int scores[] = {0,0,0};
    
    //deal
     for( int i = 0; i < HAND_SIZE; i++ ){
@@ -64,7 +64,7 @@ int main() {
     int temp = 0;
     //arrayShift to put zeros at end;
     for(int i = 0; i < HAND_SIZE; i++){
-            if(Card** hand[i]==0){
+            if(Card** hand[i]=0){
             Card** hand[i]=temp;
             Card** hand[i+1]=Card** hand[i]; //swap
             temp=Card** hand[i+1];
@@ -104,3 +104,7 @@ int pickCard( Card** hand, int numCards ){
   
   return choice;
 }
+// Classes not defined
+// errors with identifiers
+// errors with how coding that is unfamilar is running - program is returning an error stating
+// the misuse of certain code requiring certain pointers in  main.cpp \ identifiers need fixed mainly.
