@@ -34,7 +34,7 @@ int main() {
     //bids'
     int bids[] = {0,0,0};
     //scores'
-    int scores[] = {0,0,0}
+    int scores[] = {0,0,0};
    
    //deal
     for( int i = 0; i < HAND_SIZE; i++ ){
