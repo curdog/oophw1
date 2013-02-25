@@ -5,15 +5,16 @@
 
 class Ai {
 public:
-  Ai( int hand_size );
+  Ai( int );
   ~Ai();
   Card* play_Card( const Card**, int );
   int recieveDelt( const Card* );
   int makeBid();
 
 private:
-  Card* hand;
-  int size_hand;  
+  Card** hand;
+  int size_hand;
+  int max_hand_size;
 };
 
 #endif
