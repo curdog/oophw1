@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
+#include <iostream>
 
 Deck::Deck(){
   DECK_SIZE = 30;
@@ -27,7 +28,7 @@ void Deck::shuffle(){
   srand( time( 0 ) );
  
   for( int i = 0; i < 2000; i++ ){
-    swap( deck[rand() % DECK_SIZE ], deck[rand() % DECK_SIZE ] );
+    swap( rand() % DECK_SIZE, rand() % DECK_SIZE  );
   }
   index = 0;
 }
@@ -36,13 +37,13 @@ Card* Deck::deal(){
   if( index > DECK_SIZE ){
     return 0;
   }  
-  //possible bug here, trying
-  return deck[index++];
+  index++;
+  std::cout << "dealing card" << deck[index-1]->getSuit() << " " << deck[index -1]->getNumber() << std::endl;
+  return deck[index-1];
 }
 
-void Deck::swap( Card* a, Card* b){
-  Card* c;
-  c = a;
-  a = b;
-  b = c;
+void Deck::swap( int a, int b){
+  Card* c = deck[a];
+  deck[a] = deck[b];
+  deck[b] = c;
 }

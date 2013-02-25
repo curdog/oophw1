@@ -45,6 +45,9 @@ int main() {
       a.recieveDelt( deck.deal() );
       b.recieveDelt( deck.deal() );
     }
+    
+    //print cards
+    printHand( hand, numCards);
 
     //bid
     cout << "Players bid: ";
@@ -73,9 +76,9 @@ int main() {
             }
     }
     //ai a plays
-    a.play_Card( board );
+    a.play_Card( board, 3 );
     //ai b plays
-    b.play_Card( board );
+    b.play_Card( board, 3 );
     
     //function to pick a winner win condition is highest card of suit
     //score

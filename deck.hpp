@@ -10,7 +10,7 @@ public:
   void shuffle();
   Card* deal( );
 private:
-  void swap( Card*, Card* ); //internal helper function
+  void swap(int, int ); //internal helper function
   Card** deck; //array of pointers to Cards
   int index; // for dealing purposes
   int DECK_SIZE; //tempting to put as a define

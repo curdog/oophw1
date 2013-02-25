@@ -4,7 +4,7 @@
 Ai::Ai( int hand_size ){
   size_hand = 0;
   max_hand_size = 10;
-  hand = new Card*[size_hand];
+  hand = new Card*[max_hand_size];
 }
 
 Ai::~Ai( ){
@@ -53,6 +53,7 @@ Card* Ai::play_Card(  Card** board, int players ){
 int Ai::recieveDelt( Card* delt ){
   if( size_hand > max_hand_size )
     return -1;
+
   hand[size_hand] = delt;
   size_hand++;
   return 0;
