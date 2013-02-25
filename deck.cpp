@@ -26,8 +26,7 @@ Deck::~Deck(){
 
 void Deck::shuffle(){
   srand( time( 0 ) );
- 
-  for( int i = 0; i < 2000; i++ ){
+  for( int i = 0; i < 20; i++ ){
     swap( rand() % DECK_SIZE, rand() % DECK_SIZE  );
   }
   index = 0;

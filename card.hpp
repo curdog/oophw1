@@ -3,6 +3,7 @@
 
 class Card{
 public:
+	//takes the value and suit of card
   Card(int, char);
   int getNumber() const;
   char getSuit() const;

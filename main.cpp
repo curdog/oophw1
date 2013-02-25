@@ -3,6 +3,7 @@
 #include <iostream>
 
 #define HAND_SIZE 10
+#define PLAYERS 3
 
 using namespace std;
 
@@ -10,50 +11,31 @@ void printHand( Card**, int );
 int pickCard( Card**, int );
 
 int main() {
-<<<<<<< HEAD
   Deck deck =  Deck();
-=======
-  Dec::deck = new Deck();
->>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
-  int choice = 1;
+  bool won = false;
   
-  while( choice ){
-    
-    cout << "1: Play Game" << endl;
-    cout << "0: Quit" << endl;
-    cin >> choice;
-    
-    if( !choice ) continue;
+	//players hand
+	Card** hand = new Card*[HAND_SIZE];
+	//AI's
+	Ai a = Ai( HAND_SIZE );
+	Ai b = Ai( HAND_SIZE );
+	
+	//order player first, ai a, ai b
+	//bids'
+	int bids[] = {0,0,0};
+	//scores'
+	int scores[] = {0,0,0};
+	//made tricks
+	int tricks[] = {0,0,0};
+	//players remaining cards
+	int numCards = 0;
+	
+	
+  while( !won ){
     
     deck.shuffle();
     
-    //players hand
-    Card** hand = new Card*[10];
-    //AI's
-<<<<<<< HEAD
-    Ai a = Ai( HAND_SIZE );
-    Ai b = Ai( HAND_SIZE );
-=======
-    Ai a,b;
-    a = Ai( HAND_SIZE );
-    b = Ai( HAND_SIZE );
->>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
-    
-    
-    //order player first, ai a, ai b
-    //bids'
-    int bids[] = {0,0,0};
-    //scores'
-<<<<<<< HEAD
-    int scores[] = {0,0,0};
-    //players remaining cards
-    int numCards = 0;
-
-=======
-    int scores[] = {0,0,0}
-   
->>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
-   //deal
+		//deal
     for( int i = 0; i < HAND_SIZE; i++ ){
       hand[i] = deck.deal();
       numCards++;
@@ -63,57 +45,84 @@ int main() {
     
     //print cards
     printHand( hand, numCards);
-
+		
     //bid
     cout << "Players bid: ";
     cin >> bids[0];
     
     bids[1] = a.makeBid();
     bids[2] = b.makeBid();
- 
-    bool winner = false;
-   
-    Card** board = new Card*[3];
-    while( !winner ){
-    
-    //play bard music
-    
-    //player plays ( in function pickCard returns a Card pointer)
-    int pickedCard = pickCard(  hand,  numCards );
-    board[0] = hand[ pickedCard ];//change
-    hand[pickedCard] = 0;//remove card from hand
-    
-    //arrayShift to put zeros at end;
-<<<<<<< HEAD
-    for(int i = 0; i < HAND_SIZE; i++){
-            if( hand[i]==0){
-	      hand[i]= hand[i+1]; //swap
-	      hand[i+1] = 0;
-=======
-    for( int i = 0; i < HAND_SIZE; i++ ){
-            if(Card** hand[i]==0){
-            Card** hand[i]=temp;
-            Card** hand[i+1]=Card** hand[i]; //swap
-            temp=Card** hand[i+1];
->>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
-            }
-    }
-    //ai a plays
-    a.play_Card( board, 3 );
-    //ai b plays
-    b.play_Card( board, 3 );
-    
-    //function to pick a winner win condition is highest card of suit
-    //score
-    
-    //after all this works then work on changing player order with who wins.
-    
-    }
-    
-  }//input loop
-  
-  return 0;
+		
+		
+    Card** board = new Card*[PLAYERS];
+		
+		while ( numCards > 0 ){
+			//play bard music
+			
+			//player plays ( in function pickCard returns a Card pointer)
+			int pickedCard = pickCard(  hand,  numCards );
+			board[0] = hand[ pickedCard ];//change
+			hand[pickedCard] = 0;//remove card from hand
+			
+			//arrayShift to put zeros at end;
+			//minus one to prevent overflow also doesn't matter if there is a zero already at end
+			for(int i = 0; i < HAND_SIZE - 1; i++){
+				if( hand[i]==0){
+					hand[i]= hand[i+1]; //swap
+					hand[i+1] = 0;
+				}
+			}
+			
+			//ai a plays
+			a.play_Card( board, PLAYERS );
+			//ai b plays
+			b.play_Card( board, PLAYERS );
+			
+			//hand winner
+			int highest = 0;
+			for( int i =0; i < PLAYERS; i++ ){
+				if (board[i]->getNumber() > board[highest]->getNumber() && board[0]->getSuit() == board[i]->getSuit() ) {
+					highest = i;
+				}
+			}
+			tricks[highest]++;
+			
+			//clear board of cards
+			for (int i =0; i<PLAYERS; i++) {
+				board[i]=0;
+			}
+			
+		}//end of hand
+		
+		//compute scores
+		for( int i = 0; i < PLAYERS; i++ ){
+			//made bid
+			if( bids[i] >= tricks[i] ){
+				scores[i] += tricks[i] * 10;
+			}
+			//did not make bid
+			else {
+				scores[i] += -( tricks[i] * 10 );
+			}
+
+		}
+		
+		//check for wins
+		for (int i = 0; i < PLAYERS; i++) {
+			
+		}
+		
+	} //next hand
+	
+	//end screen
+	cout << "Player: " << scores[0] << endl;
+	cout << "Computer A: " << scores[1] << endl;
+	cout << "Computer B: " << scores[2] << endl;
+	
+	return 0;
 }
+
+//auxillary functions for readiblity
 
 void printHand( Card** hand, int numCards ){
   for( int i = 0; i < numCards; i++ ){
@@ -124,34 +133,15 @@ void printHand( Card** hand, int numCards ){
 //returns index of selected card
 int pickCard( Card** hand, int numCards ){
     int choice;
-<<<<<<< HEAD
     cout<<"Play a card.";
     for( int i = 0; i < numCards; i++ ){
       cout << "Choice: " << i << " " << hand[i]->getNumber() << " of " << hand[i]->getSuit() << endl;
     }
     while( !(cin>> choice) ){
       cout << "Bad entry" <<endl;
-      
+      cin.clear();
+			cin.ignore(1000);
     }
     
-  
-  
   return choice;
 }
-=======
-for( i=0,i< HAND_SIZE,i++ ){
-    cout << "Choice: " <<
-    cout << hand[i]->getNumber() << " " << hand[i]->getSuit() << endl;
-    cout << "Play a card." ;
-    cin >> choice;
-    hand[i]->getNumber();
-  }
-  
-  return choice;
-}
-
-// Classes not defined
-// errors with identifiers
-// errors with how coding that is unfamilar is running - program is returning an error stating
-// the misuse of certain code requiring certain pointers in  main.cpp \ identifiers need fixed mainly.
->>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
