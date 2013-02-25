@@ -95,11 +95,12 @@ void printHand( Card** hand, int numCards ){
 
 //returns index of selected card
 int pickCard( Card** hand, int numCards ){
+    int choice;
     cout<<"Play a card.";
-    cin>> ;
-  
+    cin>> choice;
+  //dispay number choice with card list
   hand[i]->getNumber();
   
   
-  return picked card index;
+  return choice;
 }
