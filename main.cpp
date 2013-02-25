@@ -104,3 +104,7 @@ int pickCard( Card** hand, int numCards ){
   
   return choice;
 }
+// Classes not defined
+// errors with identifiers
+// errors with how coding that is unfamilar is running - program is returning an error stating
+// the misuse of certain code requiring certain pointers in  main.cpp \ identifiers need fixed mainly.
