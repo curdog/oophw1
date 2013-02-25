@@ -29,7 +29,7 @@ Card* Ai::play_Card(  Card** board, int players ){
   Card* highest_board_card = board[0];
 
   
-  for( int i =0; i<players; i++){
+  for( int i =1; i<players; i++){
     if( board[i] == 0 ) continue;
     
     if( board[i]->getNumber() > highest_board_card->getNumber() &&
