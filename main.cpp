@@ -33,7 +33,7 @@ int main() {
 	
   while( !won ){
     
-    //deck.shuffle();
+    deck.shuffle();
     
 		//deal
     for( int i = 0; i < HAND_SIZE; i++ ){
@@ -74,9 +74,9 @@ int main() {
 			}
 			
 			//ai a plays
-			a.play_Card( board, PLAYERS );
+			board[1] = a.play_Card( board, PLAYERS );
 			//ai b plays
-			b.play_Card( board, PLAYERS );
+			board[2] = b.play_Card( board, PLAYERS );
 			
 			//hand winner
 			int highest = 0;
