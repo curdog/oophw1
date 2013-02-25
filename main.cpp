@@ -10,7 +10,11 @@ void printHand( Card**, int );
 int pickCard( Card**, int );
 
 int main() {
+<<<<<<< HEAD
   Deck deck =  Deck();
+=======
+  Dec::deck = new Deck();
+>>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
   int choice = 1;
   
   while( choice ){
@@ -26,18 +30,29 @@ int main() {
     //players hand
     Card** hand = new Card*[10];
     //AI's
+<<<<<<< HEAD
     Ai a = Ai( HAND_SIZE );
     Ai b = Ai( HAND_SIZE );
+=======
+    Ai a,b;
+    a = Ai( HAND_SIZE );
+    b = Ai( HAND_SIZE );
+>>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
     
     
     //order player first, ai a, ai b
     //bids'
     int bids[] = {0,0,0};
     //scores'
+<<<<<<< HEAD
     int scores[] = {0,0,0};
     //players remaining cards
     int numCards = 0;
 
+=======
+    int scores[] = {0,0,0}
+   
+>>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
    //deal
     for( int i = 0; i < HAND_SIZE; i++ ){
       hand[i] = deck.deal();
@@ -69,10 +84,18 @@ int main() {
     hand[pickedCard] = 0;//remove card from hand
     
     //arrayShift to put zeros at end;
+<<<<<<< HEAD
     for(int i = 0; i < HAND_SIZE; i++){
             if( hand[i]==0){
 	      hand[i]= hand[i+1]; //swap
 	      hand[i+1] = 0;
+=======
+    for( int i = 0; i < HAND_SIZE; i++ ){
+            if(Card** hand[i]==0){
+            Card** hand[i]=temp;
+            Card** hand[i+1]=Card** hand[i]; //swap
+            temp=Card** hand[i+1];
+>>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
             }
     }
     //ai a plays
@@ -101,6 +124,7 @@ void printHand( Card** hand, int numCards ){
 //returns index of selected card
 int pickCard( Card** hand, int numCards ){
     int choice;
+<<<<<<< HEAD
     cout<<"Play a card.";
     for( int i = 0; i < numCards; i++ ){
       cout << "Choice: " << i << " " << hand[i]->getNumber() << " of " << hand[i]->getSuit() << endl;
@@ -114,3 +138,20 @@ int pickCard( Card** hand, int numCards ){
   
   return choice;
 }
+=======
+for( i=0,i< HAND_SIZE,i++ ){
+    cout << "Choice: " <<
+    cout << hand[i]->getNumber() << " " << hand[i]->getSuit() << endl;
+    cout << "Play a card." ;
+    cin >> choice;
+    hand[i]->getNumber();
+  }
+  
+  return choice;
+}
+
+// Classes not defined
+// errors with identifiers
+// errors with how coding that is unfamilar is running - program is returning an error stating
+// the misuse of certain code requiring certain pointers in  main.cpp \ identifiers need fixed mainly.
+>>>>>>> 51320ad7e67f8cf6c979e21b15cdd86ebeb813e1
