@@ -33,7 +33,7 @@ int main() {
 	
   while( !won ){
     
-    deck.shuffle();
+    //deck.shuffle();
     
 		//deal
     for( int i = 0; i < HAND_SIZE; i++ ){
