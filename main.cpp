@@ -140,7 +140,7 @@ int pickCard( Card** hand, int numCards ){
     while( !(cin>> choice) ){
       cout << "Bad entry" <<endl;
       cin.clear();
-			cin.ignore(1000);
+			cin.ignore(1000,'\n');
     }
     
   return choice;
