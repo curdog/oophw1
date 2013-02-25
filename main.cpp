@@ -1,15 +1,16 @@
 #include "deck.hpp"
+#include "ai.hpp"
 #include <iostream>
 
 #define HAND_SIZE 10
 
 using namespace std;
 
-void printHand( Card[], int );
-int pickCard( Card[], int );
+void printHand( Card**, int );
+int pickCard( Card**, int );
 
 int main() {
-  Deck::deck = new Deck();
+  Deck deck =  Deck();
   int choice = 1;
   
   while( choice ){
@@ -25,9 +26,8 @@ int main() {
     //players hand
     Card** hand = new Card*[10];
     //AI's
-    Ai; a,b;
-    a = Ai( HAND_SIZE );
-    b = Ai( HAND_SIZE );
+    Ai a = Ai( HAND_SIZE );
+    Ai b = Ai( HAND_SIZE );
     
     
     //order player first, ai a, ai b
@@ -35,10 +35,13 @@ int main() {
     int bids[] = {0,0,0};
     //scores'
     int scores[] = {0,0,0};
-   
+    //players remaining cards
+    int numCards = 0;
+
    //deal
     for( int i = 0; i < HAND_SIZE; i++ ){
       hand[i] = deck.deal();
+      numCards++;
       a.recieveDelt( deck.deal() );
       b.recieveDelt( deck.deal() );
     }
@@ -52,24 +55,23 @@ int main() {
  
     bool winner = false;
    
-    Card** board = new Card*[];
+    Card** board = new Card*[3];
     while( !winner ){
     
     //play bard music
     
     //player plays ( in function pickCard returns a Card pointer)
-    int pickedCard = pickCard( Card** hand, int numCards );
+    int pickedCard = pickCard(  hand,  numCards );
     board[0] = hand[ pickedCard ];//change
     hand[pickedCard] = 0;//remove card from hand
-    int temp = 0;
+    
     //arrayShift to put zeros at end;
     for(int i = 0; i < HAND_SIZE; i++){
-            if(Card** hand[i]=0){
-            Card** hand[i]=temp;
-            Card** hand[i+1]=Card** hand[i]; //swap
-            temp=Card** hand[i+1];
+            if( hand[i]==0){
+	      hand[i]= hand[i+1]; //swap
+	      hand[i+1] = 0;
             }
-}
+    }
     //ai a plays
     a.play_Card( board );
     //ai b plays
@@ -97,14 +99,15 @@ void printHand( Card** hand, int numCards ){
 int pickCard( Card** hand, int numCards ){
     int choice;
     cout<<"Play a card.";
-    cin>> choice;
-  //dispay number choice with card list
-  hand[i]->getNumber();
+    for( int i = 0; i < numCards; i++ ){
+      cout << "Choice: " << i << " " << hand[i]->getNumber() << " of " << hand[i]->getSuit() << endl;
+    }
+    while( !(cin>> choice) ){
+      cout << "Bad entry" <<endl;
+      
+    }
+    
   
   
   return choice;
 }
-// Classes not defined
-// errors with identifiers
-// errors with how coding that is unfamilar is running - program is returning an error stating
-// the misuse of certain code requiring certain pointers in  main.cpp \ identifiers need fixed mainly.
