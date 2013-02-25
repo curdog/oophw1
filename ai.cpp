@@ -20,8 +20,6 @@ Card* Ai::play_Card(  Card** board, int players ){
     return 0;
   }
   
-  
-  int highest_suit = -1;
   int lowest_suit = -1;
   int lowest_all = 0;
   

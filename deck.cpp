@@ -38,12 +38,10 @@ void Deck::shuffle(){
 
 Card* Deck::deal(){
   if( index > DECK_SIZE ){
-		std::cout << "Should not be here" << std::endl;
+		
     return 0;
   }  
   index++;
-  std::cout << "dealing card" << index << std::endl;
-	std::cout << deck[index-1]->getSuit() << " " << deck[index -1]->getNumber() << std::endl;
   return deck[index-1];
 }
 
