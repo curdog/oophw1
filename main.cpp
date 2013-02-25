@@ -25,7 +25,7 @@ int main() {
     //players hand
     Card** hand = new Card*[10];
     //AI's
-    Ai a,b;
+    Ai; a,b;
     a = Ai( HAND_SIZE );
     b = Ai( HAND_SIZE );
     
